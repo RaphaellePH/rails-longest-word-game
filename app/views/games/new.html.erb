@@ -1,0 +1,14 @@
+<div class=container>
+  <h1>New game</h1>
+  <% @letters.each_with_index do |letter, index| %>
+    <input class="letter-box" type="text" name="letters" value=<%=@letters[index]%>>
+  <%end%>
+
+  <p>What is the longest word you can find?</p>
+  <form action="/score" method="post" data-turbo="false" class="input-group mb-3">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <input type="text" name="word" class="form-control">
+    <input type="submit" value="Play" class="btn btn-outline-secondary">
+  </form>
+</div>
